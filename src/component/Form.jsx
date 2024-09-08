@@ -8,7 +8,7 @@ export const Form = () => {
     doe: "",
     country: "",
     skills: [],
-  });
+  }); //state to store user value
 
   const [errorFields, setErrorFields] = useState({
     firstName: "",
