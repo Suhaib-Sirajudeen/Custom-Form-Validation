@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Form.css";
+import { Input } from "./Input";
 export const Form = () => {
   const [userValue, setUserValue] = useState({
     firstName: "",
@@ -33,7 +34,15 @@ export const Form = () => {
     if (isFormValidonSubmit()) {
       console.log("submitted");
       alert("submitted");
-      return;
+      setUserValue({
+        firstName: "",
+        email: "",
+        gender: "",
+        doe: "",
+        country: "",
+        skills: [],
+      });
+
     }
 
     console.log("invalid");
@@ -158,14 +167,16 @@ export const Form = () => {
           >
             <div className="firstname-section">
               <label htmlFor="firstname">Firstname:</label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstname"
-                placeholder="Enter your firstname"
-                onChange={handleInput}
-                onBlur={handleOnblur}
+
+              <Input 
+                type={'text'} 
+                name={'firstName'} 
+                id={'firstName'} 
+                value={userValue.firstName} 
+                handleInput={handleInput} 
+                handleOnblur={handleOnblur} 
               />
+
               {errorMsg.firstName && (
                 <p style={{ color: "red", fontSize: "12px" }}>
                   {errorMsg.firstName}
@@ -179,14 +190,16 @@ export const Form = () => {
             </div>
             <div className="email-section">
               <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter your emailid"
-                onChange={handleInput}
-                onBlur={handleOnblur}
+
+              <Input
+                type={"email"}
+                name={"email"}
+                id={"email"}
+                value={userValue.email}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
               />
+
               {errorMsg.email && (
                 <p style={{ color: "red", fontSize: "12px" }}>
                   {errorMsg.email}
@@ -198,29 +211,33 @@ export const Form = () => {
                 </p>
               )}
             </div>
+
             <div className="radio-button-label">
               <label htmlFor="gender">Gender:</label>
             </div>
+
             <div className="Gender-section">
-              <input
-                type="radio"
-                name="gender"
-                id="male"
-                placeholder="Enter your Gender"
-                onChange={handleInput}
-                onBlur={handleOnblur}
-                value="male"
+              <Input 
+                type={'radio'}
+                name={'gender'}
+                id={'male'}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
+                value='male'
+                checked={userValue.gender==='male'}
               />
               <label htmlFor="male" style={{ fontWeight: "lighter" }}>
                 Male
               </label>
-              <input
-                type="radio"
-                name="gender"
+
+              <Input
+                type={"radio"}
+                name={"gender"}
+                id={"female"}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
                 value="female"
-                id="female"
-                onChange={handleInput}
-                onBlur={handleOnblur}
+                checked={userValue.gender === "female"}
               />
               <label htmlFor="female" style={{ fontWeight: "lighter" }}>
                 female
@@ -234,14 +251,14 @@ export const Form = () => {
 
             <div className="doe-section">
               <label htmlFor="doe">Date of Birth:</label>
-              <input
-                type="date"
-                name="doe"
-                id="doe"
-                placeholder="Enter your date of birth"
-                onChange={handleInput}
-                onBlur={handleOnblur}
-              />
+              < Input
+               type={'date'}
+               name={'doe'}
+               id={'doe'}
+               handleInput={handleInput}
+               handleOnblur={handleOnblur}
+               value={userValue.doe}
+               />
               {errorFields.doe && (
                 <p style={{ color: "red", fontSize: "12px" }}>
                   The Date of birth is required
@@ -255,6 +272,7 @@ export const Form = () => {
                 id="country"
                 onChange={handleInput}
                 onBlur={handleOnblur}
+                value={userValue.country}
               >
                 <option value="">Select</option>
                 <option value="India" onBlur={handleOnblur}>
@@ -276,32 +294,34 @@ export const Form = () => {
 
             <div className="checkbox">
               <label htmlFor="skills">Skills:</label>
-              <input
-                type="checkbox"
-                name="skills"
-                id="react"
-                value="React"
-                onChange={handleSkills}
-                onBlur={checkBoxValidation}
-                // onBlur={handleOnbluronCheckBox}
+              <Input
+                type={'checkbox'}
+                name={'skills'}
+                id={'react'}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
+                value='React'
+                checked={userValue.skills==='React'}
               />
               <label htmlFor="react">React</label>
-              <input
-                type="checkbox"
-                name="skills"
-                id="angular"
-                value="Angular"
-                onChange={handleSkills}
-                onBlur={checkBoxValidation}
+              <Input
+                type={'checkbox'}
+                name={'skills'}
+                id={'angular'}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
+                value='angular'
+                checked={userValue.skills==='angular'}
               />
               <label htmlFor="angular">Angular</label>
-              <input
-                type="checkbox"
-                name="skills"
-                id="flutter"
-                value="Flutter"
-                onChange={handleSkills}
-                onBlur={checkBoxValidation}
+              <Input
+                type={'checkbox'}
+                name={'skills'}
+                id={'flutter'}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
+                value='flutter'
+                checked={userValue.skills==='flutter'}
               />
               <label htmlFor="flutter">Flutter</label>
               {errorFields.skills && (
