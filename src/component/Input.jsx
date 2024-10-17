@@ -6,7 +6,7 @@ export const Input = ({
   handleOnblur,
   value,
   checked,
-  inputRef
+  
 }) => {
   return (
     <input
@@ -18,7 +18,7 @@ export const Input = ({
       onBlur={handleOnblur}
       value={value}
       checked={checked}
-      ref={inputRef}
+    
     />
   );
 };
