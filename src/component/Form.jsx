@@ -42,10 +42,10 @@ export const Form = () => {
         country: "",
         skills: [],
       });
-
+      console.log(userValue);
+    } else {
+      console.log("invalid");
     }
-
-    console.log("invalid");
   };
 
   const handleInput = (event) => {
@@ -168,13 +168,13 @@ export const Form = () => {
             <div className="firstname-section">
               <label htmlFor="firstname">Firstname:</label>
 
-              <Input 
-                type={'text'} 
-                name={'firstName'} 
-                id={'firstName'} 
-                value={userValue.firstName} 
-                handleInput={handleInput} 
-                handleOnblur={handleOnblur} 
+              <Input
+                type={"text"}
+                name={"firstName"}
+                id={"firstName"}
+                value={userValue.firstName}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
               />
 
               {errorMsg.firstName && (
@@ -217,14 +217,14 @@ export const Form = () => {
             </div>
 
             <div className="Gender-section">
-              <Input 
-                type={'radio'}
-                name={'gender'}
-                id={'male'}
+              <Input
+                type={"radio"}
+                name={"gender"}
+                id={"male"}
                 handleInput={handleInput}
                 handleOnblur={handleOnblur}
-                value='male'
-                checked={userValue.gender==='male'}
+                value="male"
+                checked={userValue.gender === "male"}
               />
               <label htmlFor="male" style={{ fontWeight: "lighter" }}>
                 Male
@@ -251,14 +251,14 @@ export const Form = () => {
 
             <div className="doe-section">
               <label htmlFor="doe">Date of Birth:</label>
-              < Input
-               type={'date'}
-               name={'doe'}
-               id={'doe'}
-               handleInput={handleInput}
-               handleOnblur={handleOnblur}
-               value={userValue.doe}
-               />
+              <Input
+                type={"date"}
+                name={"doe"}
+                id={"doe"}
+                handleInput={handleInput}
+                handleOnblur={handleOnblur}
+                value={userValue.doe}
+              />
               {errorFields.doe && (
                 <p style={{ color: "red", fontSize: "12px" }}>
                   The Date of birth is required
@@ -295,33 +295,33 @@ export const Form = () => {
             <div className="checkbox">
               <label htmlFor="skills">Skills:</label>
               <Input
-                type={'checkbox'}
-                name={'skills'}
-                id={'react'}
-                handleInput={handleInput}
-                handleOnblur={handleOnblur}
-                value='React'
-                checked={userValue.skills==='React'}
+                type={"checkbox"}
+                name={"skills"}
+                id={"react"}
+                handleInput={handleSkills}
+                handleOnblur={checkBoxValidation}
+                value="React"
+                checked={userValue.skills.includes("React")}
               />
               <label htmlFor="react">React</label>
               <Input
-                type={'checkbox'}
-                name={'skills'}
-                id={'angular'}
-                handleInput={handleInput}
-                handleOnblur={handleOnblur}
-                value='angular'
-                checked={userValue.skills==='angular'}
+                type={"checkbox"}
+                name={"skills"}
+                id={"angular"}
+                handleInput={handleSkills}
+                handleOnblur={checkBoxValidation}
+                value="angular"
+                checked={userValue.skills.includes("angular")}
               />
               <label htmlFor="angular">Angular</label>
               <Input
-                type={'checkbox'}
-                name={'skills'}
-                id={'flutter'}
-                handleInput={handleInput}
-                handleOnblur={handleOnblur}
-                value='flutter'
-                checked={userValue.skills==='flutter'}
+                type={"checkbox"}
+                name={"skills"}
+                id={"flutter"}
+                handleInput={handleSkills}
+                handleOnblur={checkBoxValidation}
+                value="flutter"
+                checked={userValue.skills.includes("flutter")}
               />
               <label htmlFor="flutter">Flutter</label>
               {errorFields.skills && (
